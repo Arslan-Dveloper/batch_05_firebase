@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "315069934250",
+    "project_id": "mp-batch-05-firebase",
+    "storage_bucket": "mp-batch-05-firebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:315069934250:android:b2554eb32ca3fb409d3ed3",
+        "android_client_info": {
+          "package_name": "com.example.batch_05_firebase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArlJJ8oJUKfj9NrrEPz91qohB3iVjNLiE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
