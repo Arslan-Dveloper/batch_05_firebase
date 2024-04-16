@@ -24,6 +24,11 @@ class UserController extends GetxController {
   // }
 
   Future<void> addPost(PostModal postModal) async {
-    await FirebaseFirestore.instance.collection('post').add(postModal.toMap());
+    await FirebaseFirestore.instance
+        .collection('users')
+        .doc(postModal.userId)
+        .collection('posts')
+        .doc(postModal.id)
+        .set(postModal.toMap());
   }
 }

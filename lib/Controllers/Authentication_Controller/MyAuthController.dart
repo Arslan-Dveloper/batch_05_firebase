@@ -11,10 +11,13 @@ class VerficationController extends GetxController {
         .then((value) async {
       await value.user?.updateDisplayName(name);
       var obj = UserModal(
-          name: name, email: email, password: password, id: value.user!.uid);
+          name: name,
+          email: email,
+          password: password,
+          id: value.user!.uid.toString());
       await FirebaseFirestore.instance
           .collection('users')
-          .doc(obj.id)
+          .doc(obj.id.toString())
           .set(obj.toMap());
       response = 'Success';
     }).catchError((e) {
