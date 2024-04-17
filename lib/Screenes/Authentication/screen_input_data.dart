@@ -1,5 +1,6 @@
 import 'package:batch_05_firebase/Controllers/Authentication_Controller/MyAuthController.dart';
 import 'package:batch_05_firebase/Custom_Widgets/My_Custom_Widgets.dart';
+import 'package:batch_05_firebase/Extention/Padding_Extention.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -31,15 +32,15 @@ class ScreenInputData extends StatelessWidget {
             MyTextFormField(
               hintText: 'Full name',
               controllerTextField: inputName,
-            ),
+            ).onlyPadding(left: 20,right: 20),
             MyTextFormField(
               hintText: 'Email Here',
               controllerTextField: inputEmail,
-            ),
+            ).onlyPadding(left: 20,right: 20),
             MyTextFormField(
               hintText: 'Password Here',
               controllerTextField: inputPassword,
-            ),
+            ).onlyPadding(left: 20,right: 20),
             GestureDetector(
               onTap: () async {
                 var response = await controller.signUp(

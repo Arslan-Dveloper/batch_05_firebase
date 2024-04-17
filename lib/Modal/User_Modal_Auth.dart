@@ -1,11 +1,10 @@
 import 'package:get_storage_pro/get_storage_pro.dart';
 
-class UserModal {
-  String? name;
-  String? email;
-  String? password;
-
-  String? id;
+class UserModal extends CommonDataClass<UserModal> {
+  String name;
+  String email;
+  String password;
+  String id;
 
   UserModal({
     required this.name,
@@ -28,7 +27,11 @@ class UserModal {
       name: map['name'],
       email: map['email'],
       password: map['password'],
-      id: map['id'] as dynamic,
+      id: map['id'] as String,
     );
+  }
+
+  UserModal fromMap(Map<String, dynamic> map) {
+    return UserModal.fromMap(map);
   }
 }

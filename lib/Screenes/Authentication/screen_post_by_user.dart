@@ -1,9 +1,11 @@
 import 'package:batch_05_firebase/Custom_Widgets/My_Custom_Widgets.dart';
+import 'package:batch_05_firebase/Modal/User_Modal_Auth.dart';
 import 'package:batch_05_firebase/Modal/comment.dart';
 import 'package:batch_05_firebase/Modal/post.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get_storage_pro/get_storage_pro.dart';
 
 class ScreenPostByUser extends StatelessWidget {
   String userId;
@@ -14,7 +16,7 @@ class ScreenPostByUser extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.brown,
         title: Text(
-          'Post by ${userId}',
+          'Post by ${GetStoragePro.getObjectById<UserModal>(userId)?.name??'Unknown'}',
           style: TextStyle(color: Colors.white),
         ),
       ),
@@ -75,9 +77,16 @@ class ScreenPostByUser extends StatelessWidget {
                               Map<String, dynamic> data =
                                   document.data()! as Map<String, dynamic>;
                               var comment = Comment.fromMap(data);
-                              return ListTile(
-                                title: Text('${comment.body}'),
-                                subtitle: Text('${comment.userId}'),
+                              var user = GetStoragePro.getObjectById<UserModal>(
+                                  comment.userId.toString());
+                              print(user);
+                              return Card(
+                                margin: EdgeInsets.all(5),
+                                color: Colors.grey,
+                                child: ListTile(
+                                  title: Text('${user?.name ?? 'Unknown'}'),
+                                  subtitle: Text('${comment.body}'),
+                                ),
                               );
                             }).toList(),
                           );
@@ -106,7 +115,7 @@ class ScreenPostByUser extends StatelessWidget {
                                           DateTime.now().millisecondsSinceEpoch;
                                       var comment = Comment(
                                         userId: FirebaseAuth
-                                            .instance.currentUser?.uid,
+                                            .instance.currentUser!.uid,
                                         id: timeStamp.toString(),
                                         postId: post.id,
                                         body: bodyController.text,

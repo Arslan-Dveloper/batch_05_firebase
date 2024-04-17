@@ -14,6 +14,7 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
   runApp(const MyApp());
 }
 
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
           ? ScreenInputData()
           : ScreenAllUser(),
 
-      // home: ScreenInputData(),
+      //home: ScreenInputData(),
     );
   }
 }

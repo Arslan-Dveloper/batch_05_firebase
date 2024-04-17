@@ -1,5 +1,5 @@
 class Comment {
-  String? userId;
+  String userId;
   String? id;
   String? postId;
   String? body;
